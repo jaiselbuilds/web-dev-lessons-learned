@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Explore the HTTP request–response cycle through an interactive vulnerability search built with JavaScript and Express." />
+    <title>RequestScope — HTTP Request Explorer</title>
+    <!-- Use the logo from the original VulnScope project. -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/jpaintsil-neu/vulnscope/main/public/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" type="module"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#overview" aria-label="RequestScope home">
+          <span class="logo-shell">
+            <img class="brand-logo" src="https://raw.githubusercontent.com/jpaintsil-neu/vulnscope/main/public/images/logo.png" alt="" />
+            <span class="logo-fallback" aria-hidden="true">V</span>
+          </span>
+          <span class="brand-name"><span class="brand-request">Request</span><span class="brand-scope">Scope</span></span>
+          <span class="brand-suffix">API</span>
+        </a>
+        <nav class="primary-navigation" aria-label="Page sections">
+          <a href="#overview">Overview</a>
+          <a href="#workspace">Vulnerabilities</a>
+          <a href="#how-it-works">Request flow</a>
+        </nav>
+        <span class="header-status"><span class="status-dot" aria-hidden="true"></span> Local HTTP walkthrough</span>
+      </div>
+    </header>
+
+    <main class="page-container" id="main-content">
+      <section class="workspace-heading" id="overview" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">WEB DEVELOPMENT / API FUNDAMENTALS</p>
+          <h1 id="page-title">RequestScope</h1>
+          <p class="page-intro">Follow a vulnerability search from the browser to an Express API and back. See what changes on the page—and what the network request actually returns.</p>
+        </div>
+        <span class="case-study-pill">Node.js + Express + Fetch</span>
+      </section>
+
+      <section class="overview-band" aria-label="Application architecture">
+        <div><span class="step-num">01</span><strong>Browser</strong><span>Submit severity filter</span></div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div><span class="step-num">02</span><strong>Express API</strong><span>Validate and filter</span></div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div><span class="step-num">03</span><strong>JSON</strong><span>Return a response</span></div>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div><span class="step-num">04</span><strong>DOM</strong><span>Display results</span></div>
+      </section>
+
+      <section class="workspace" id="workspace" aria-labelledby="workspace-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">INTERACTIVE WORKSPACE</p>
+            <h2 id="workspace-title">Vulnerability Search</h2>
+          </div>
+          <span class="dataset-badge">4 fictional records</span>
+        </div>
+        <div class="workspace-grid">
+          <aside class="workspace-panel filter-panel" aria-labelledby="filters-heading">
+            <h3 id="filters-heading">Search &amp; Filter</h3>
+            <p class="panel-description">Select a severity to request matching records from the local API.</p>
+            <form id="search-form" role="search" aria-labelledby="filters-heading">
+              <label for="severity">Severity</label>
+              <select id="severity" name="severity">
+                <option value="ALL">All severities</option>
+                <option value="LOW">Low</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HIGH" selected>High</option>
+                <option value="CRITICAL">Critical</option>
+              </select>
+              <button class="button-primary" type="submit">Apply Filters</button>
+            </form>
+            <p class="filter-footnote">The server validates the filter before returning JSON.</p>
+          </aside>
+
+          <section class="workspace-panel results-panel" aria-labelledby="results-heading">
+            <div class="results-heading">
+              <h3 id="results-heading">Vulnerability Records</h3>
+              <span class="results-count">Fictional data</span>
+            </div>
+            <div class="results-layout">
+              <div class="column-headings" aria-hidden="true"><span>Record</span><span>Severity</span></div>
+              <ul id="results" aria-label="Matching vulnerability records"></ul>
+              <p id="status" role="status" aria-live="polite">Select a severity and click Search.</p>
+            </div>
+            <p class="results-note">This example uses an in-memory dataset—not live CVEs or a MongoDB connection.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="network-guide" id="how-it-works" aria-labelledby="network-title">
+        <div>
+          <p class="eyebrow">OBSERVE THE ROUND TRIP</p>
+          <h2 id="network-title">Inspect the HTTP exchange</h2>
+          <p>Open Chrome DevTools → Network → Fetch/XHR, run a search, and examine the request method, status code, and JSON response.</p>
+        </div>
+        <code>GET /api/vulnerabilities?severity=HIGH</code>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner"><span>RequestScope · Interface inspired by VulnScope</span><span>HTML · CSS · JavaScript · Express</span></div>
+    </footer>
+  </body>
+</html>
