@@ -5,12 +5,28 @@ import { vulnerabilities } from "./data.js";
 // A separate app module allows tests to start the server on a free port.
 export const app = express();
 
-// Serve the ready-made browser interface from /public.
+
 app.use(express.static(fileURLToPath(new URL("./public/", import.meta.url))));
 
-// The only API endpoint in this demo: GET with a severity filter.
+
 app.get("/api/vulnerabilities", (req, res) => {
-  // LIVE CODING TASK 1: Replace this placeholder with validation,
-  // an array filter, and a JSON response (see LIVE_CODING_CUE_CARD.md).
-  return res.status(501).json({ error: "API route not implemented yet." });
+  
+  
+const severity = req.query.severity; // Read the query parameter.
+
+const allowed = ["ALL", "LOW", "MEDIUM", "HIGH", "CRITICAL"];
+
+// Reject unsupported severity values.
+if (typeof severity !== "string" || !allowed.includes(severity)) {
+  return res.status(400).json({ error: "Choose a valid severity." });
+}
+
+// Filter the sample vulnerability records.
+const results = severity === "ALL"
+  ? vulnerabilities
+  : vulnerabilities.filter((item) => item.severity === severity);
+
+// Return the matching records as JSON.
+return res.status(200).json({ count: results.length, results });
+
 });
