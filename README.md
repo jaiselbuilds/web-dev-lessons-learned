@@ -1,161 +1,137 @@
-# RequestScope
+# Web Development Lessons Learned
 
-**Trace a Search from Browser to Server—and Back**
+**RequestScope — Trace a Search from Browser to Server and Back**
 
-RequestScope is an interactive, full-stack web development example built with semantic HTML, responsive CSS, vanilla JavaScript, Node.js, and Express. A small vulnerability search illustrates how browser events become HTTP requests, how a server validates and handles those requests, and how returned JSON updates the document.
+An individual web-development portfolio project exploring how an interface, a JavaScript client, and an Express API work together. A fictional vulnerability search demonstrates the HTTP request–response cycle, input validation, JSON responses, and updates to the Document Object Model (DOM).
 
-The interface follows the visual language of [VulnScope](https://github.com/jpaintsil-neu/vulnscope), while the codebase remains intentionally smaller and self-contained. The provided records are **fictional**, and the server uses an in-memory array rather than MongoDB or the National Vulnerability Database.
+The application uses a small **in-memory dataset** rather than a live vulnerability feed or database. Its navy-and-blue interface draws on the design of [VulnScope](https://github.com/jpaintsil-neu/vulnscope), a separate full-stack cybersecurity project.
 
-- **Repository:** `jpaintsil-neu/requestscope` *(planned; not yet published)*
-- **Related project:** [VulnScope](https://github.com/jpaintsil-neu/vulnscope)
+- **Repository:** [jpaintsil-neu/web-dev-lessons-learned](https://github.com/jpaintsil-neu/web-dev-lessons-learned)
+- **Video walkthrough:** [How Web Applications Work — full narrated presentation](https://youtu.be/LiD-fVj6Lyc)
+- **Live-coding chapter:** [Watch the Express and Fetch API demonstration](https://youtu.be/LiD-fVj6Lyc?t=1201) (starts at approximately 20:01)
+
+## Presentation and Video Demo
+
+[![How Web Applications Work: browser, API, database, and live coding demo — YouTube thumbnail](assets/how-web-apps-work-thumbnail.jpg)](https://youtu.be/LiD-fVj6Lyc)
+
+**[Watch the full presentation on YouTube](https://youtu.be/LiD-fVj6Lyc)** (25:52). The narrated presentation explains HTML, CSS, JavaScript, the DOM, HTTP, Node.js, Express, MongoDB concepts, and full-stack architecture. It concludes with a **real VS Code and Chrome DevTools demonstration** using this repository's application.
+
+*The presentation discusses MongoDB as a full-stack concept; the standalone coding example in this repository deliberately uses fictional records held in memory.*
 
 ## Author
 
 ### John Paintsil
 
-- GitHub: [jpaintsil-neu](https://github.com/jpaintsil-neu)
-- Focus: browser–server communication, API routing, input validation, and user-facing results.
+- GitHub: [@jpaintsil-neu](https://github.com/jpaintsil-neu)
+- Focus: client–server communication, web APIs, JavaScript, and accessible browser interactions.
 
 ## Project Objective
 
-Show the complete HTTP request–response lifecycle through one understandable interaction:
+Make the request–response lifecycle tangible through a single search action:
 
-1. A visitor selects a severity and submits the search form.
-2. JavaScript sends `GET /api/vulnerabilities?severity=HIGH`.
-3. An Express route validates the filter and searches a small collection of fictional records.
-4. The server returns a status code and a JSON response.
-5. JavaScript checks the response and updates the visible results without a full-page reload.
+1. Select a severity level and submit the form.
+2. JavaScript sends `GET /api/vulnerabilities?severity=HIGH` with `fetch()`.
+3. Express reads and validates the requested severity.
+4. The server filters four fictional records and returns a status code and JSON.
+5. JavaScript interprets the response and updates the page without a full reload.
 
-This project intentionally keeps database persistence and real vulnerability feeds out of scope. Its purpose is to demonstrate the connection between the user interface, Fetch API, routing, HTTP responses, and DOM manipulation.
+The repository contains the **completed, working version** of the two coding tasks shown in the video: the Express route and the frontend Fetch API call. The folder retains its original `starter/` name so it can be followed alongside the recording.
 
 ## Pages
 
-### Vulnerability Search — [`starter/public/index.html`](./starter/public/index.html)
+### Vulnerability Search — [`starter/public/index.html`](starter/public/index.html)
 
-The single-page workspace provides:
+The single-page interface includes a VulnScope-inspired header, responsive layout, labeled severity selector, **Apply Filters** button, results panel, accessible status messages, and an explanation of the browser → API → JSON → DOM flow.
 
-- A VulnScope-inspired sticky header, branding, and responsive layout.
-- A labeled severity selector and an **Apply Filters** action.
-- A results panel with accessible status messages.
-- A visual summary of the browser → Express → JSON → DOM sequence.
-- Instructions for inspecting requests through browser Developer Tools.
+## JavaScript Functionality
 
-The initial route and Fetch call are **deliberately unfinished** so they can be implemented as a focused coding exercise.
-
-## Original JavaScript Functionality
-
-The provided browser code prepares form handling, loading and error feedback, and safe DOM rendering with `textContent`. The learner implements the `fetch()` request and parses its JSON result.
-
-The server setup and four fictional records are already present. The learner completes the Express `GET` route by reading `req.query.severity`, validating the value, filtering the records, and returning an appropriate HTTP status and JSON body.
-
-See the [live coding guide](./LIVE_CODING_CUE_CARD.md) for the precise implementation steps.
+- **Browser:** Intercepts form submission, builds the query URL, calls `fetch()`, parses JSON, checks `response.ok`, and safely renders results with `textContent`.
+- **Server:** Uses an Express `GET` route to validate the query, filter sample records, and respond with JSON and appropriate HTTP status codes.
+- **Error and empty states:** Distinguishes a successful search with zero matches from a rejected invalid request.
 
 ## Technologies
 
-- HTML5 and semantic form controls.
-- CSS3, Flexbox, Grid, and responsive breakpoints.
-- Vanilla JavaScript, ES modules, `async/await`, and the Fetch API.
-- Node.js, npm, and Express 5.
-- HTTP status codes, query parameters, and JSON.
-- Git and GitHub.
+- Semantic HTML5 and responsive CSS3 (Flexbox and Grid)
+- Vanilla JavaScript, ES modules, `async/await`, and the Fetch API
+- Node.js 20+ and Express 5
+- HTTP methods, query parameters, status codes, and JSON
+- Chrome DevTools, Git, and GitHub
 
-**No MongoDB connection, external API credentials, or production dataset is required.**
+No MongoDB installation, API key, account, or external dataset is required to run this example.
 
 ## Project Structure
 
 ```text
-requestscope/
+web-dev-lessons-learned/
+├── assets/
+│   └── how-web-apps-work-thumbnail.jpg   # YouTube video preview
 ├── starter/
-│   ├── app.js               
-│   ├── data.js               
-│   ├── server.js             
-│   ├── package.json          
+│   ├── app.js                             # Express route and validation
+│   ├── data.js                            # Four fictional records
+│   ├── server.js                          # HTTP server entry point
+│   ├── package.json
+│   ├── package-lock.json
 │   └── public/
-│       ├── index.html      
-│       ├── styles.css       
-│       └── app.js           
-├── docs/
-├── .gitignore
+│       ├── index.html                     # Search interface
+│       ├── styles.css                     # Responsive page design
+│       └── app.js                         # Fetch and DOM updates
+├── LICENSE
 └── README.md
 ```
 
-The repository deliberately contains **only `starter/`**, not a finished reference implementation, so the implementation steps remain available for the coding walkthrough.
-
-## Design Documentation
-
-The interface takes its navy-and-blue palette, form layout, and page hierarchy from VulnScope. The original VulnScope logo is loaded from the public project repository, with a visible fallback if the icon cannot load.
-
-See [design notes](./docs/DESIGN_NOTES.md) for the visual choices and the distinction between this example and the full VulnScope application.
-
 ## Installation and Local Development
 
-**Prerequisites:** Node.js **20 or later** and npm.
+**Prerequisites:** Node.js 20 or later and npm.
 
 ```bash
-# After publishing on GitHub, clone it as follows:
-git clone https://github.com/jpaintsil-neu/requestscope.git
-cd requestscope/starter
+# Clone the published repository.
+git clone https://github.com/jpaintsil-neu/web-dev-lessons-learned.git
+cd web-dev-lessons-learned/starter
 
-# Install dependencies and start the local server.
-npm install
+# Install dependencies and start Express.
+npm ci
 npm start
 ```
 
-Open **http://localhost:3000** in your browser, then open Chrome DevTools → **Network → Fetch/XHR**.
-
-> **Starter behavior:** Until the two exercise steps are implemented, the Express endpoint returns `501 Not Implemented`, and the browser code contains a placeholder error. This is expected. The app is a prepared exercise, not a finished search application.
-
-If you are using the downloaded ZIP before GitHub publication, extract it and open its `requestscope/starter` folder instead.
-
-For the exercise, follow [`LIVE_CODING_CUE_CARD.md`](./LIVE_CODING_CUE_CARD.md) and restart the server if necessary. Use `npm run dev` to enable Node's watch mode during development.
+Open **http://localhost:3000** and select a severity level. During development, `npm run dev` starts Node.js in watch mode.
 
 ## Using the Application
 
-Once the two coding tasks are completed:
+Choose **HIGH**, then **Apply Filters**, to display two fictional records. Try **CRITICAL** to see an empty but successful result. Open Chrome DevTools → **Network → Fetch/XHR** to inspect the request URL, response status, and JSON body.
 
-- Choose a severity and select **Apply Filters**.
-- Observe the HTTP status and matching fictional records in the results panel.
-- Examine the GET request URL, response status, and JSON payload in Chrome DevTools.
-- Compare a successful search with an unsupported severity sent directly to the API URL.
-
-A successful search with no records is different from a failed request: `CRITICAL` returns `200 OK` with an empty results array, whereas an unsupported value returns a `400` validation error.
+For the validation case, visit `http://localhost:3000/api/vulnerabilities?severity=INVALID` directly in the browser.
 
 ## API Endpoint
 
-**GET** `/api/vulnerabilities?severity=HIGH`
+**`GET /api/vulnerabilities?severity=HIGH`**
 
-After implementation, the expected outcomes are:
-
-| Query | Status | Result |
+| Query | HTTP response | Expected behavior |
 | --- | --- | --- |
 | `severity=HIGH` | `200 OK` | Two matching fictional records |
-| `severity=ALL` | `200 OK` | All four records |
-| `severity=CRITICAL` | `200 OK` | No matches; empty results array |
+| `severity=ALL` | `200 OK` | All four sample records |
+| `severity=CRITICAL` | `200 OK` | Empty results array (`count: 0`) |
 | `severity=INVALID` | `400 Bad Request` | JSON validation error |
-| Unknown endpoint | `404 Not Found` | No matching route |
 
-The API uses `count` and `results` in successful JSON responses. These outcomes are **implementation targets**, not claims that the starter works before the exercise is completed.
+Successful responses use the shape `{ "count": number, "results": [...] }`. The supported severity values are `ALL`, `LOW`, `MEDIUM`, `HIGH`, and `CRITICAL` (uppercase).
 
 ## Code Quality and Validation
 
-The code keeps server setup separate from the Express app and uses short inline comments to explain the key operations. Browser results are rendered with `textContent`, reducing the risk of inserting untrusted HTML.
-
-Recommended checks after implementation include JavaScript syntax, HTTP status handling, the `HIGH`/`ALL`/`CRITICAL`/`INVALID` cases, and keyboard interaction with the form. There is no automated test suite in this starter-only repository.
+The application separates server startup from Express route configuration and uses short inline comments. Browser data is inserted as text rather than HTML. The demonstration verifies matching results, an empty successful response, and an invalid-request error. This repository does not claim an automated test suite or formal security certification.
 
 ## Accessibility
 
-The interface includes a skip link, labeled native form controls, visible keyboard focus, a live results status, and responsive styling. These design considerations should be checked manually; they are not a formal accessibility conformance claim.
+The page includes semantic form controls, a labeled severity selector, keyboard focus treatment, a skip link, and a live results-status region. These features are design considerations, not a formal accessibility compliance claim.
 
-## Visual Reference
+## Design and References
 
-The branded interface is designed to resemble the search-and-filter workspace in [VulnScope](https://github.com/jpaintsil-neu/vulnscope), while focusing on one local HTTP example. The original VulnScope logo and visual identity remain attributed to that project.
+The search workspace takes design cues from [VulnScope](https://github.com/jpaintsil-neu/vulnscope); its scope and data remain independent. The video thumbnail is included in [`assets/`](assets/how-web-apps-work-thumbnail.jpg) so the README preview stays with the repository.
 
-## References
+Technical references:
 
 - [MDN — Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - [Express — Routing](https://expressjs.com/en/guide/routing.html)
 - [MDN — Document Object Model](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model)
 
----
+## License
 
-An individual portfolio example focused on explaining and implementing client–server communication.
+Licensed under the [MIT License](LICENSE).
