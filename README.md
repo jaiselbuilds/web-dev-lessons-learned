@@ -9,6 +9,7 @@ The application uses a small **in-memory dataset** rather than a live vulnerabil
 - **Repository:** [jpaintsil-neu/web-dev-lessons-learned](https://github.com/jpaintsil-neu/web-dev-lessons-learned)
 - **Video walkthrough:** [How Web Applications Work — full narrated presentation](https://youtu.be/LiD-fVj6Lyc)
 - **Live-coding chapter:** [Watch the Express and Fetch API demonstration](https://youtu.be/LiD-fVj6Lyc?t=1201) (starts at approximately 20:01)
+- **Video post advertise (Bluesky):** [See Video Post](https://bsky.app/profile/jpaintsil.bsky.social/post/3my54rlsyjc2o)
 
 ## Presentation and Video Demo
 
@@ -64,17 +65,17 @@ No MongoDB installation, API key, account, or external dataset is required to ru
 ```text
 web-dev-lessons-learned/
 ├── assets/
-│   └── how-web-apps-work-thumbnail.jpg   # YouTube video preview
+│   └── how-web-apps-work-thumbnail.jpg   
 ├── starter/
-│   ├── app.js                             # Express route and validation
-│   ├── data.js                            # Four fictional records
-│   ├── server.js                          # HTTP server entry point
+│   ├── app.js                             
+│   ├── data.js                            
+│   ├── server.js                          
 │   ├── package.json
 │   ├── package-lock.json
 │   └── public/
-│       ├── index.html                     # Search interface
-│       ├── styles.css                     # Responsive page design
-│       └── app.js                         # Fetch and DOM updates
+│       ├── index.html                     
+│       ├── styles.css                     
+│       └── app.js                         
 ├── LICENSE
 └── README.md
 ```
