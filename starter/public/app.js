@@ -10,10 +10,13 @@ form.addEventListener("submit", async (event) => {
   resultsList.replaceChildren();
 
   try {
-    // LIVE CODING TASK 2: Replace this placeholder with two lines:
-    //   const response = await fetch(...);
-    //   const data = await response.json();
-    throw new Error("Add the Fetch API request during the live demo.");
+    
+    
+    const response = await fetch(
+      `/api/vulnerabilities?severity=${encodeURIComponent(severitySelect.value)}`
+    );
+    const data = await response.json();
+
 
     // A 400 response still resolves fetch(), so explicitly check its status.
     if (!response.ok) {
