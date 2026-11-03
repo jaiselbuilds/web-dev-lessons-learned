@@ -4,9 +4,9 @@
 
 An individual web-development portfolio project exploring how an interface, a JavaScript client, and an Express API work together. A fictional vulnerability search demonstrates the HTTP request–response cycle, input validation, JSON responses, and updates to the Document Object Model (DOM).
 
-The application uses a small **in-memory dataset** rather than a live vulnerability feed or database. Its navy-and-blue interface draws on the design of [VulnScope](https://github.com/jaiselbuilds/vulnscope), a separate full-stack cybersecurity project.
+The application uses a small **in-memory dataset** rather than a live vulnerability feed or database. Its navy-and-blue interface draws on the design of [VulnScope](https://github.com/kosolume/vulnscope), a separate full-stack cybersecurity project.
 
-- **Repository:** [jaiselbuilds/web-dev-lessons-learned](https://github.com/jaiselbuilds/web-dev-lessons-learned)
+- **Repository:** [kosolume/web-dev-lessons-learned](https://github.com/kosolume/web-dev-lessons-learned)
 - **Video walkthrough:** [How Web Applications Work — full narrated presentation](https://youtu.be/LiD-fVj6Lyc)
 - **Live-coding chapter:** [Watch the Express and Fetch API demonstration](https://youtu.be/LiD-fVj6Lyc?t=1201) (starts at approximately 20:01)
 - **Video post advertise (Bluesky):** [See Video Post](https://bsky.app/profile/jpaintsil.bsky.social/post/3mzb7fw53hs25)
@@ -23,7 +23,7 @@ The application uses a small **in-memory dataset** rather than a live vulnerabil
 
 ### John Paintsil
 
-- GitHub: [@jaiselbuilds](https://github.com/jaiselbuilds)
+- GitHub: [@kosolume](https://github.com/kosolume)
 - Focus: client–server communication, web APIs, JavaScript, and accessible browser interactions.
 
 ## Project Objective
@@ -86,7 +86,7 @@ web-dev-lessons-learned/
 
 ```bash
 # Clone the published repository.
-git clone https://github.com/jaiselbuilds/web-dev-lessons-learned.git
+git clone https://github.com/kosolume/web-dev-lessons-learned.git
 cd web-dev-lessons-learned/starter
 
 # Install dependencies and start Express.
@@ -125,7 +125,7 @@ The page includes semantic form controls, a labeled severity selector, keyboard 
 
 ## Design and References
 
-The search workspace takes design cues from [VulnScope](https://github.com/jaiselbuilds/vulnscope); its scope and data remain independent. The video thumbnail is included in [`assets/`](assets/how-web-apps-work-thumbnail.jpg) so the README preview stays with the repository.
+The search workspace takes design cues from [VulnScope](https://github.com/kosolume/vulnscope); its scope and data remain independent. The video thumbnail is included in [`assets/`](assets/how-web-apps-work-thumbnail.jpg) so the README preview stays with the repository.
 
 Technical references:
 
