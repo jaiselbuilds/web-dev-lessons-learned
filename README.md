@@ -9,7 +9,7 @@ The application uses a small **in-memory dataset** rather than a live vulnerabil
 - **Repository:** [kosolume/web-dev-lessons-learned](https://github.com/kosolume/web-dev-lessons-learned)
 - **Video walkthrough:** [How Web Applications Work — full narrated presentation](https://youtu.be/LiD-fVj6Lyc)
 - **Live-coding chapter:** [Watch the Express and Fetch API demonstration](https://youtu.be/LiD-fVj6Lyc?t=1201) (starts at approximately 20:01)
-- **Video post advertise (Bluesky):** [See Video Post](https://bsky.app/profile/jpaintsil.bsky.social/post/3mzb7fw53hs25)
+- **Video post advertise (Bluesky):** [See Video Post](https://bsky.app/profile/kosolume.com/post/3mzb7fw53hs25)
 
 ## Presentation and Video Demo
 
@@ -21,7 +21,7 @@ The application uses a small **in-memory dataset** rather than a live vulnerabil
 
 ## Author
 
-### John Paintsil
+### Kosolume
 
 - GitHub: [@kosolume](https://github.com/kosolume)
 - Focus: client–server communication, web APIs, JavaScript, and accessible browser interactions.
