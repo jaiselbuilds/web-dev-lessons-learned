@@ -21,7 +21,7 @@ The application uses a small **in-memory dataset** rather than a live vulnerabil
 
 ## Author
 
-### Kosolume
+### John
 
 - GitHub: [@kosolume](https://github.com/kosolume)
 - Focus: client–server communication, web APIs, JavaScript, and accessible browser interactions.
@@ -86,7 +86,7 @@ web-dev-lessons-learned/
 
 ```bash
 # Clone the published repository.
-git clone https://github.com/kosolume/web-dev-lessons-learned.git
+git clone https://github.com//web-dev-lessons-learned.git
 cd web-dev-lessons-learned/starter
 
 # Install dependencies and start Express.
