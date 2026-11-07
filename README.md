@@ -21,7 +21,7 @@ The application uses a small **in-memory dataset** rather than a live vulnerabil
 
 ## Author
 
-### John
+### Kosolume
 
 - GitHub: [@kosolume](https://github.com/kosolume)
 - Focus: client–server communication, web APIs, JavaScript, and accessible browser interactions.
